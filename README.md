@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+# 🧾 Shared Wishlist App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack web application that allows users to create, manage, and share wishlists with others in real-time.
 
-## Available Scripts
+Built for the FlockShop Full Stack Internship Assignment using:
 
-In the project directory, you can run:
+- ⚛️ React (Frontend)
+- 🧪 Express.js + MongoDB (Backend)
+- ⚡ Socket.IO (Real-time sync)
+- 🎨 Tailwind CSS (Styling)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🔐 Authentication
+- Sign up and log in using email & password (JWT-based)
+- Protected routes and auto-redirect for logged-in users
 
-### `npm test`
+### 📋 Wishlists
+- Create and delete wishlists
+- Invite members by email
+- View only the wishlists you created or were invited to
+- Realtime sync of deletions and invites via Socket.IO
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 📦 Products
+- Add/delete products inside a wishlist
+- See who added each product
+- Real-time product sync across all members
 
-### `npm run build`
+### 👥 Members
+- Invite others to a wishlist
+- Only invited users can see shared wishlists
+- Socket.io rooms for per-user & per-wishlist updates
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 💻 Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Category     | Tech                      |
+|--------------|---------------------------|
+| Frontend     | React, Tailwind CSS       |
+| Backend      | Express, Node.js          |
+| Database     | MongoDB with Mongoose     |
+| Real-Time    | Socket.IO                 |
+| Auth         | JWT + bcrypt              |
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🚀 Setup Instructions
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 1. Clone the repository
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+git clone https://github.com/Yeshwanth-kr/wishlist.git
+cd wishlist
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 2. Backend Setup
 
-## Learn More
+```bash
+cd server
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Create a .env file in /server:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```env
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/wishlist
+JWT_SECRET=your_jwt_secret
+ORIGIN = "http://localhost:3000"
+```
 
-### Code Splitting
+Start the backend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm run server
+```
 
-### Analyzing the Bundle Size
+### 3. Frontend Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+cd client
+npm install
+npm start
+```
+Create a .env file in /client:
 
-### Making a Progressive Web App
+```env
+REACT_APP_URL = "http://localhost:5000"
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📸 Screenshots
 
-### Advanced Configuration
+## 📂 Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```pgsql
+/client       --> React frontend
+/server       --> Express + MongoDB backend
+```
 
-### Deployment
+## 📌 Future Improvements
+- 🔁 Add emoji reactions and product comments
+- 📝 Edit product functionality
+- 📱 Mobile-first responsive layout
+- 🔔 Toast alerts for real-time changes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🧠 Learnings & Scaling Ideas
+- 👥 Socket.IO room logic for users and wishlists
+- 🔐 JWT-based stateless authentication
+- 🔌 Easily extendable to Firebase/Auth0 for production
+- 🧵 Could use Redis pub/sub for socket scaling in production
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##  🧑‍💻 Author
+- Developed by Yeshwanth Krishna
+- GitHub: @Yeshwanth-kr
