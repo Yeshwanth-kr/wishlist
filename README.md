@@ -91,7 +91,9 @@ Create a .env file in /client:
 REACT_APP_URL = "http://localhost:5000"
 ```
 
-## 📸 Screenshots
+## 📸 Loom video
+[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://www.loom.com/share/723191aaf03f4e388c44130a08424709?sid=5d279032-f5cf-45c8-b276-84bf137502f9)
+
 
 ## 📂 Project Structure
 
