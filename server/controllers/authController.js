@@ -22,12 +22,17 @@ export const signup = async (req, res) => {
         await user.save();
 
         const token = jwt.sign({ _id: user._id }, process.env.JWT_KEY, {
-          expiresIn: 1000 * 60 * 60 * 24 * 15,
+          expiresIn: 7 * 24 * 60 * 60 * 1000,
         });
 
         res
           .status(201)
-          .cookie("jwt", token)
+          .cookie("jwt", token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "None",
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+          })
           .json({
             message: "Signup successful",
             user: { name: user.name, email: user.email },
@@ -55,12 +60,17 @@ export const login = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
 
     const token = jwt.sign({ _id: user._id }, process.env.JWT_KEY, {
-      expiresIn: 1000 * 60 * 60 * 24 * 15,
+      expiresIn: 7 * 24 * 60 * 60 * 1000,
     });
 
     res
       .status(200)
-      .cookie("jwt", token)
+      .cookie("jwt", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+      })
       .json({
         message: "Login successful",
         user: { name: user.name, email: user.email },
