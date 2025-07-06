@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode"; // install if needed
 import { useAuth } from "../context/AuthContext.js";
 import socket from "../socket.js";
 
@@ -19,11 +18,30 @@ export default function Dashboard() {
   const [newTitle, setNewTitle] = useState("");
 
   useEffect(() => {
-    const token = document.cookie.split("=")[1];
-    if (token) {
-      const decoded = jwtDecode(token);
-      socket.emit("register-user", decoded.id); // your token should include `id`
-    }
+    const getUserId = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.REACT_APP_URL}/api/auth/userinfo`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+          }
+        );
+        const data = await res.json();
+        const userId = data._id;
+        if (userId) {
+          socket.emit("register-user", userId);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getUserId();
+
     fetchWishlists();
   }, []);
 
