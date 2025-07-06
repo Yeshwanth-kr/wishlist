@@ -87,7 +87,7 @@ npm run server
 ```bash
 cd client
 npm install
-npm start
+npm run start
 ```
 
 Create a .env file in /client:
