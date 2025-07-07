@@ -98,9 +98,9 @@ REACT_APP_URL = "http://localhost:5000"
 
 ## Links
 
-# Server available on (https://wishlist-server-7tua.onrender.com)
+Server available on (https://wishlist-server-7tua.onrender.com)
 
-# Live App available on (https://wishlist-six-sable.vercel.app)
+Live App available on (https://wishlist-six-sable.vercel.app)
 
 ## 📸 Loom video
 
